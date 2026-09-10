@@ -255,10 +255,18 @@ export default function Footer() {
           <div>
             Copyright © {currentYear} Taxfello. All rights reserved. Managed by <a href="https://www.brandbanalo.com" className="hover:text-white transition-colors">Brandbanalo</a>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center flex-wrap justify-center gap-x-4 gap-y-2">
+            <Link href="/terms-and-conditions" className="hover:text-white transition-colors underline underline-offset-2">
+              Terms &amp; Conditions
+            </Link>
+            <span className="text-slate-700">|</span>
+            <Link href="/privacy-policy" className="hover:text-white transition-colors underline underline-offset-2">
+              Privacy Policy
+            </Link>
+            <span className="text-slate-700 hidden sm:inline">|</span>
             <span className="flex items-center gap-1 text-slate-400">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              100% Confidential & CA Supervised
+              100% Confidential &amp; CA Supervised
             </span>
           </div>
         </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { 
   Send, 
   CheckCircle2, 
@@ -11,6 +12,7 @@ import {
 import { BRAND, CORE_SERVICES } from '@/lib/constants';
 
 export default function LeadForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -78,6 +80,7 @@ export default function LeadForm() {
         service: '',
         message: '',
       });
+      setTimeout(() => router.push('/thankyou'), 1000);
     } catch (err: any) {
       setStatus('error');
       setErrorMessage(err.message || 'Something went wrong. Please try again.');

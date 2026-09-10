@@ -1,11 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { X, CheckCircle2, AlertCircle, Phone, ArrowRight, MessageCircle } from 'lucide-react';
 import { CORE_SERVICES, BRAND } from '@/lib/constants';
 
 export default function LeadPopup() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -98,6 +100,7 @@ export default function LeadPopup() {
         message: '',
       });
       sessionStorage.setItem('taxfello_popup_dismissed', 'true');
+      setTimeout(() => router.push('/thankyou'), 1000);
     } catch (err: any) {
       setStatus('error');
       setErrorMessage(err.message || 'Something went wrong. Please try again.');
