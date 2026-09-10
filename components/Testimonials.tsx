@@ -19,7 +19,7 @@ const ROW_ONE_REVIEWS: Review[] = [
     name: 'Sneha Gupta',
     role: 'Salaried • Delhi',
     rating: 5,
-    quote: 'Got my maximum refund in just 2 weeks! The tax-saving recommendations helped me save ₹38,000 on deductions.',
+    quote: 'Got my maximum refund in just 2 weeks! The tax-saving recommendations helped me significantly optimize my deductions.',
   },
   {
     initials: 'RS',
@@ -43,7 +43,7 @@ const ROW_ONE_REVIEWS: Review[] = [
     name: 'Priya Verma',
     role: 'Product Designer • Gurugram',
     rating: 5,
-    quote: 'Managing foreign remittances and 44ADA freelance income was confusing. The CA session sorted everything in 30 mins.',
+    quote: 'Managing foreign remittances and 44ADA freelance income was confusing. The expert session sorted everything in 30 mins.',
   },
   {
     initials: 'MK',
@@ -51,7 +51,7 @@ const ROW_ONE_REVIEWS: Review[] = [
     name: 'Manish Kumar',
     role: 'Tech Consultant • Noida',
     rating: 5,
-    quote: 'Filing ITR-3 with F&O trading capital gains felt scary. The assigned CA reviewed my broker statement and set up proper write-offs.',
+    quote: 'Filing ITR-3 with F&O trading capital gains felt scary. The assigned expert reviewed my broker statement and set up proper write-offs.',
   },
 ];
 
@@ -86,7 +86,7 @@ const ROW_TWO_REVIEWS: Review[] = [
     name: 'Karan Sharma',
     role: 'Business Owner • Faridabad',
     rating: 5,
-    quote: 'Running a manufacturing unit means continuous GST reconciliation. Taxfello sorted out ₹3.4L in pending ITC without hassle.',
+    quote: 'Running a manufacturing unit means continuous GST reconciliation. Taxfello sorted out a significant amount of pending ITC without hassle.',
   },
   {
     initials: 'NG',

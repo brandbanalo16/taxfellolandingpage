@@ -1,22 +1,35 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
-import { Phone, MessageCircle, CheckCircle2, ShieldCheck, Award, ArrowRight } from 'lucide-react';
+import { Phone, MessageCircle, CheckCircle2, Award, ArrowRight, Briefcase, Users, Globe, TrendingUp } from 'lucide-react';
 import { BRAND } from '@/lib/constants';
 
 export default function AboutUs() {
+  const services = [
+    { icon: Briefcase, label: 'Income Tax & ITR Filing' },
+    { icon: TrendingUp, label: 'GST Registration & Compliance' },
+    { icon: Users, label: 'Company & Business Registration' },
+    { icon: Globe, label: 'Virtual CFO & Advisory' },
+  ];
+
   const highlights = [
-    'Senior Chartered Accountants & Corporate Legal Advisors',
+    'Expert Chartered Accountants & Corporate Legal Advisors',
     '10,000+ Completed Tax & Corporate Mandates across Delhi NCR',
     '100% Digital Document Vault with Bank-Grade 256-bit Security',
     'Proactive Scrutiny Defence & Zero-Delay Statutory Filings',
   ];
 
+  const handlePopup = () => {
+    window.dispatchEvent(new Event('open-consultation-popup'));
+  };
+
   return (
     <section id="about-us" className="py-12 sm:py-20 bg-white border-t border-stone-200/60 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-          
-          {/* Left Column: Content & Two Action Buttons (Call & WhatsApp) */}
+
+          {/* Left Column: Content & Two Action Buttons */}
           <div className="lg:col-span-6 flex flex-col items-start text-left">
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-bold uppercase tracking-wider mb-3">
               <Award className="w-3.5 h-3.5 text-brand-600" />
@@ -28,11 +41,10 @@ export default function AboutUs() {
             </h2>
 
             <p className="text-sm sm:text-lg text-slate-600 leading-relaxed mb-4 sm:mb-6 font-normal">
-              Founded by veteran Chartered Accountants, Taxfello bridges the gap between complex statutory regulations and fast-moving business goals. We empower startups, MSMEs, and individual taxpayers with institutional-grade financial leadership.
+              Taxfello is a premier tax and compliance advisory firm, bridging the gap between complex statutory regulations and fast-moving business goals. We empower startups, MSMEs, and individual taxpayers with institutional-grade financial leadership.
             </p>
-
-            <p className="hidden sm:block text-sm text-slate-500 leading-relaxed mb-8">
-              From ITR filing and GST optimization to Private Limited company registrations, ROC corporate secretarial oversight, and full-scale Virtual CFO advisory — we protect your margins and ensure spotless regulatory standing.
+            <p className="hidden sm:block text-sm text-slate-500 leading-relaxed mb-6">
+              From ITR filing and GST optimization to Private Limited company registrations, ROC corporate secretarial oversight, and full-scale Virtual CFO advisory — we protect your margins and ensure spotless regulatory standing. Our services span income tax, GST, accounting, ROC compliance, payroll, and strategic financial planning.
             </p>
 
             {/* Checklist items */}
@@ -83,24 +95,9 @@ export default function AboutUs() {
                   className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
                   priority
                 />
-
-                {/* Floating Experience Badge */}
-                <div className="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-xs bg-slate-950/90 backdrop-blur-md text-white p-4 rounded-2xl border border-slate-800 shadow-xl">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-base shrink-0">
-                      19+
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-white leading-tight">Years Combined Expertise</div>
-                      <div className="text-[11px] text-slate-400 mt-0.5">Empowering Delhi NCR businesses</div>
-                    </div>
-                  </div>
-                </div>
-
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

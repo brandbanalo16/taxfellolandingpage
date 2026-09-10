@@ -1,11 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, MessageCircle } from 'lucide-react';
 import { FAQS } from '@/lib/constants';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const handlePopup = () => {
+    window.dispatchEvent(new Event('open-consultation-popup'));
+  };
 
   const toggle = (idx: number) => {
     setOpenIndex(openIndex === idx ? null : idx);
@@ -46,9 +50,8 @@ export default function FAQ() {
                     {index + 1}. {faq.question}
                   </span>
                   <span
-                    className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-slate-100 flex items-center justify-center shrink-0 text-slate-600 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 bg-brand-50 text-brand-700' : ''
-                    }`}
+                    className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-slate-100 flex items-center justify-center shrink-0 text-slate-600 transition-transform duration-200 ${isOpen ? 'rotate-180 bg-brand-50 text-brand-700' : ''
+                      }`}
                   >
                     <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </span>
@@ -74,19 +77,6 @@ export default function FAQ() {
             </button>
           </div>
         )}
-
-        {/* Additional guidance */}
-        <div className="mt-12 text-center bg-slate-50 p-6 rounded-2xl border border-slate-200">
-          <p className="text-sm text-slate-700 mb-3">
-            Have a specific scrutiny notice, complex capital gains calculation, or cross-border question?
-          </p>
-          <a
-            href="#lead-form"
-            className="inline-flex items-center text-sm font-bold text-brand-700 hover:text-navy-DEFAULT transition-colors"
-          >
-            Ask a Taxfello CA Directly →
-          </a>
-        </div>
       </div>
     </section>
   );

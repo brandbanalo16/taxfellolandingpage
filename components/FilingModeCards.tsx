@@ -1,7 +1,14 @@
+'use client';
+
 import React from 'react';
-import { ArrowRight, CheckCircle2, Video, UserCheck } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Video, UserCheck, Phone, MessageCircle } from 'lucide-react';
+import { BRAND } from '@/lib/constants';
 
 export default function FilingModeCards() {
+  const handlePopup = () => {
+    window.dispatchEvent(new Event('open-consultation-popup'));
+  };
+
   return (
     <section className="py-12 sm:py-16 bg-surface-warm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,7 +49,7 @@ export default function FilingModeCards() {
                 Want an expert to file?
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                Upload your documents and a chartered accountant prepares and e-files your return with complete accuracy.
+                Upload your documents and our expert team prepares and e-files your return with complete accuracy.
               </p>
 
               {/* Bullet Checklist */}
@@ -57,7 +64,7 @@ export default function FilingModeCards() {
                   <div className="w-5 h-5 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center mr-3 shrink-0">
                     <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
                   </div>
-                  <span>An Expert CA prepares your computation</span>
+                  <span>Our Expert prepares your computation</span>
                 </div>
                 <div className="flex items-center text-sm font-medium text-slate-700">
                   <div className="w-5 h-5 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center mr-3 shrink-0">
@@ -68,13 +75,14 @@ export default function FilingModeCards() {
               </div>
             </div>
 
+            {/* Call Button */}
             <div>
               <a
-                href="#lead-form"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg transition-all duration-200 group"
+                href={`tel:${BRAND.phoneRaw}`}
+                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-semibold text-white bg-slate-900 hover:bg-brand-700 shadow-md hover:shadow-lg transition-all duration-200 group"
               >
-                <span>Choose assisted filing</span>
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                <Phone className="w-4 h-4 mr-2 text-emerald-400 group-hover:scale-110 transition-transform" />
+                <span>Call Us Now</span>
               </a>
             </div>
           </div>
@@ -128,13 +136,16 @@ export default function FilingModeCards() {
               </div>
             </div>
 
+            {/* WhatsApp Button */}
             <div>
               <a
-                href="#lead-form"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 shadow-md hover:shadow-lg transition-all duration-200 group"
+                href="https://wa.me/918800485106?text=Hi%20Taxfello%20Team%2C%20I%20want%20to%20book%20a%20live%20filing%20session."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-semibold text-slate-950 bg-[#25D366] hover:bg-[#1fbd58] shadow-md hover:shadow-lg transition-all duration-200 group"
               >
-                <span>Book live ITR session</span>
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                <MessageCircle className="w-4 h-4 mr-2 fill-slate-950 stroke-none group-hover:scale-110 transition-transform" />
+                <span>Chat on WhatsApp</span>
               </a>
             </div>
           </div>

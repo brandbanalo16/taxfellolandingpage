@@ -1,5 +1,6 @@
+'use client';
+
 import React from 'react';
-import Link from 'next/link';
 import { 
   TrendingUp, 
   ArrowRight, 
@@ -9,8 +10,10 @@ import {
   Scale, 
   LineChart, 
   FileSpreadsheet,
-  CheckCircle2
+  CheckCircle2,
+  Phone
 } from 'lucide-react';
+import { BRAND } from '@/lib/constants';
 
 export default function VirtualCFOSection() {
   const metrics = [
@@ -21,6 +24,10 @@ export default function VirtualCFOSection() {
     { title: 'Profitability Analysis', desc: 'Unit economics, gross margin audits and cost rationalization', icon: PieChart },
     { title: 'Business Strategy', desc: 'Fundraise readiness, cap table advisory and audit support', icon: Scale },
   ];
+
+  const handlePopup = () => {
+    window.dispatchEvent(new Event('open-consultation-popup'));
+  };
 
   return (
     <section id="virtual-cfo" className="py-12 sm:py-20 bg-navy-DEFAULT text-white relative overflow-hidden scroll-mt-20">
@@ -47,29 +54,33 @@ export default function VirtualCFOSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              {/* Button 1: Call */}
               <a
-                href="#lead-form"
+                href={`tel:${BRAND.phoneRaw}`}
+                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md transition-all duration-200 group"
+              >
+                <Phone className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                <span>Call a CFO Expert</span>
+              </a>
+
+              {/* Button 2: Popup consultation */}
+              <button
+                onClick={handlePopup}
                 className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-semibold text-navy-DEFAULT bg-white hover:bg-slate-100 shadow-md transition-all duration-200 group"
               >
-                <span>Talk to a CFO Expert</span>
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <Link
-                href="/#lead-form"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-semibold text-slate-200 hover:text-white bg-slate-800/90 hover:bg-slate-800 border border-slate-700 transition-colors"
-              >
                 <span>Book Free Consultation</span>
-              </Link>
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
 
             <div className="space-y-2 text-xs text-slate-400">
               <div className="flex items-center space-x-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Fractional engagement tailored to your monthly budget</span>
+                <span>Fractional engagement tailored to your business needs</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Direct oversight by senior CAs and ex-corporate finance leaders</span>
+                <span>Direct oversight by senior advisors and ex-corporate finance leaders</span>
               </div>
             </div>
           </div>

@@ -145,12 +145,12 @@ export default function LeadPopup() {
 
             {/* Price badge */}
             <div className="inline-block bg-[#0088ea] text-white font-bold text-xs sm:text-sm px-3 py-1.5 rounded-lg shadow-sm mb-2">
-              Expert Tax & Compliance at lowest prices
+              Expert Tax & Compliance — Trusted by 20,000+
             </div>
 
             <div className="flex items-center space-x-1.5 text-[11px] sm:text-xs font-semibold text-slate-700 bg-white/80 backdrop-blur-sm py-1 px-2.5 rounded-md border border-slate-200/70 inline-flex">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-              <span>Lowest price guaranteed</span>
+              <span>Verified experts. Zero obligation.</span>
             </div>
           </div>
 

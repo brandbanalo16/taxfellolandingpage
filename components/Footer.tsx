@@ -99,7 +99,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800/80">
 
           {/* Col 1: Brand Info */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <Link href="/" className="inline-block p-2 rounded-xl bg-white/95 shadow-sm mb-4">
               <Image
                 src="/src/logo.webp"
@@ -129,28 +129,8 @@ export default function Footer() {
               </div>
             </div>
           </div>
-
-          {/* Col 2: Core Services */}
-          <div className="lg:col-span-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-              Services
-            </h4>
-            <ul className="space-y-2.5 text-xs">
-              {CORE_SERVICES.map((s) => (
-                <li key={s.id}>
-                  <Link
-                    href={s.href}
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    {s.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Col 3: Quick Links / Navbar Menu */}
-          <div className="lg:col-span-2">
+          {/* Col 2: Quick Links / Navbar Menu */}
+          <div className="lg:col-span-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
               Quick Links
             </h4>

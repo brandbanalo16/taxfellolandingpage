@@ -56,7 +56,7 @@ export default function FinalCTA() {
                   </div>
                   <div className="flex items-center space-x-2">
                     <Wallet className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span className="text-base font-bold text-white">₹28,450 received</span>
+                    <span className="text-base font-bold text-white">Refund Processed ✓</span>
                   </div>
                 </div>
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -86,7 +86,7 @@ export default function FinalCTA() {
                   </div>
                   <div className="flex items-center space-x-2">
                     <UserCheck className="w-4 h-4 text-blue-400 shrink-0" />
-                    <span className="text-base font-bold text-white">CA Priya Mehra • Filed ✓</span>
+                    <span className="text-base font-bold text-white">Tax Expert • Filed ✓</span>
                   </div>
                 </div>
                 <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-full border border-blue-500/20">

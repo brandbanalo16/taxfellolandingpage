@@ -40,9 +40,9 @@ export default function Header() {
             <Image
               src="/src/logo.webp"
               alt="Taxfello - Your Tax & Compliance Partner"
-              width={300}
-              height={300}
-              className="h-9 sm:h-11 w-auto object-contain"
+              width={500}
+              height={500}
+              className="h-11 sm:h-14 w-auto object-contain"
               priority
             />
           </Link>
