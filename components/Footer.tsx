@@ -70,6 +70,7 @@ export default function Footer() {
           phone: formData.phone,
           service: formData.service || 'General Advisory',
           source: 'Footer Callback Form',
+          pageUrl: typeof window !== 'undefined' ? window.location.href : undefined,
         }),
       });
 

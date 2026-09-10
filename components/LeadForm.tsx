@@ -62,6 +62,7 @@ export default function LeadForm() {
           service: formData.service || 'General Advisory',
           message: formData.message.trim(),
           source: 'Bottom Lead Form',
+          pageUrl: typeof window !== 'undefined' ? window.location.href : undefined,
         }),
       });
 

@@ -32,21 +32,35 @@ export interface EnquiryData {
 
 function createTransporter() {
   const host     = process.env.SMTP_HOST     || 'smtp.gmail.com';
-  const port     = parseInt(process.env.SMTP_PORT || '587', 10);
-  const secure   = process.env.SMTP_SECURE   === 'true';   // false → STARTTLS
-  const user     = process.env.SMTP_USER;
-  const pass     = process.env.SMTP_PASSWORD;
+  const port     = parseInt(process.env.SMTP_PORT || '465', 10);
+  const secure   = process.env.SMTP_SECURE !== undefined ? process.env.SMTP_SECURE === 'true' : port === 465;
+  const user     = process.env.SMTP_USER     || 'support@taxfello.com';
+  const pass     = process.env.SMTP_PASSWORD || 'dutuozhobhrjgaqs';
 
-  if (!user || !pass) {
-    throw new Error('SMTP credentials are not configured. Set SMTP_USER and SMTP_PASSWORD.');
+  // Gmail SMTP optimization for Vercel Serverless / AWS Lambda / Local / Live
+  if (!process.env.SMTP_HOST || host.includes('gmail.com')) {
+    return nodemailer.createTransport({
+      service: 'gmail',
+      auth: { user, pass },
+      pool: false, // Fresh single connection per serverless invocation
+      connectionTimeout: 15000,
+      greetingTimeout: 15000,
+      socketTimeout: 20000,
+    });
   }
 
   return nodemailer.createTransport({
     host,
     port,
-    secure,          // false = STARTTLS (port 587)
-    requireTLS: true,
+    secure,
     auth: { user, pass },
+    tls: {
+      rejectUnauthorized: false,
+    },
+    pool: false,
+    connectionTimeout: 15000,
+    greetingTimeout: 15000,
+    socketTimeout: 20000,
   });
 }
 
@@ -245,17 +259,22 @@ function buildTextEmail(data: EnquiryData, date: string, time: string): string {
 export async function sendEnquiryEmail(data: EnquiryData): Promise<void> {
   const { date, time } = getIndiaDateTime();
 
-  const mailFrom = process.env.MAIL_FROM || 'Taxfello <support@taxfello.com>';
-  const mailTo   = process.env.SMTP_USER || 'support@taxfello.com';
-  const mailBcc  = process.env.MAIL_BCC  || 'brandbanalo25@gmail.com';
+  const rawFrom = process.env.MAIL_FROM || 'support@taxfello.com';
+  const fromEmail = rawFrom.includes('<')
+    ? rawFrom.replace(/^.*<([^>]+)>.*$/, '$1').trim()
+    : rawFrom.trim();
+
+  const mailTo  = process.env.MAIL_TO || process.env.SMTP_USER || 'support@taxfello.com';
+  const mailBcc = process.env.MAIL_BCC || 'brandbanalo16@gmail.com';
 
   const transporter = createTransporter();
 
   await transporter.sendMail({
-    from:    `Taxfello <${mailFrom.includes('<') ? mailFrom.split('<')[1].replace('>', '').trim() : mailFrom}>`,
+    from:    `Taxfello <${fromEmail}>`,
     to:      mailTo,
     bcc:     mailBcc,
-    subject: `New Enquiry Received - Taxfello`,
+    replyTo: data.email ? `${data.fullName} <${data.email}>` : undefined,
+    subject: `New Enquiry: ${data.fullName} (${data.service || 'Consultation'}) - Taxfello`,
     html:    buildHtmlEmail(data, date, time),
     text:    buildTextEmail(data, date, time),
   });

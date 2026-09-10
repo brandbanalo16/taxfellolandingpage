@@ -81,6 +81,7 @@ export default function LeadPopup() {
           service: formData.service || 'General Tax Advisory',
           message: formData.message.trim(),
           source: 'Website Popup Banner',
+          pageUrl: typeof window !== 'undefined' ? window.location.href : undefined,
         }),
       });
 

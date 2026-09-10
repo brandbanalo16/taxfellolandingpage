@@ -56,6 +56,7 @@ export default function HeroLeadForm() {
           service: formData.service || 'General Consultation',
           message: formData.message.trim(),
           source: 'Hero Form',
+          pageUrl: typeof window !== 'undefined' ? window.location.href : undefined,
         }),
       });
 

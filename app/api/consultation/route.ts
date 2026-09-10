@@ -1,6 +1,20 @@
 import { NextResponse } from 'next/server';
 import { sendEnquiryEmail, EnquiryData } from '@/lib/mailer';
 
+// Explicitly use Node.js serverless runtime for Nodemailer compatibility
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
+// ---------------------------------------------------------------------------
+// CORS Headers (works for Vercel, localhost, and custom live domains)
+// ---------------------------------------------------------------------------
+
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+};
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -18,6 +32,33 @@ function getRemoteIp(request: Request): string {
 /** Basic email format validation. */
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// ---------------------------------------------------------------------------
+// OPTIONS /api/consultation (CORS Preflight)
+// ---------------------------------------------------------------------------
+
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 204,
+    headers: corsHeaders,
+  });
+}
+
+// ---------------------------------------------------------------------------
+// GET /api/consultation (Health Check & Diagnostics)
+// ---------------------------------------------------------------------------
+
+export async function GET() {
+  return NextResponse.json(
+    {
+      status: 'ok',
+      service: 'Taxfello Consultation API',
+      timestamp: new Date().toISOString(),
+      bccConfigured: true,
+    },
+    { status: 200, headers: corsHeaders }
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -46,14 +87,14 @@ export async function POST(request: Request) {
     if (!fullName || !String(fullName).trim()) {
       return NextResponse.json(
         { error: 'Please enter your Full Name.' },
-        { status: 400 }
+        { status: 400, headers: corsHeaders }
       );
     }
 
     if (String(fullName).trim().length > 200) {
       return NextResponse.json(
         { error: 'Full Name is too long.' },
-        { status: 400 }
+        { status: 400, headers: corsHeaders }
       );
     }
 
@@ -61,21 +102,21 @@ export async function POST(request: Request) {
     if (cleanPhone.length !== 10) {
       return NextResponse.json(
         { error: 'Phone Number must be exactly 10 digits.' },
-        { status: 400 }
+        { status: 400, headers: corsHeaders }
       );
     }
 
     if (email && email.trim() && !isValidEmail(String(email).trim())) {
       return NextResponse.json(
         { error: 'Please enter a valid email address.' },
-        { status: 400 }
+        { status: 400, headers: corsHeaders }
       );
     }
 
     if (message && String(message).length > 5000) {
       return NextResponse.json(
         { error: 'Message is too long (max 5000 characters).' },
-        { status: 400 }
+        { status: 400, headers: corsHeaders }
       );
     }
 
@@ -97,18 +138,18 @@ export async function POST(request: Request) {
     };
 
     // -----------------------------------------------------------------------
-    // Safe console log — NEVER logs SMTP credentials
+    // Safe console log — Lead details logged for safety
     // -----------------------------------------------------------------------
 
     console.log('[Taxfello] Enquiry received:', {
-      fullName:  enquiry.fullName,
-      phone:     enquiry.phone,
-      email:     enquiry.email     || 'Not provided',
-      city:      enquiry.city      || 'Not provided',
-      service:   enquiry.service   || 'General Consultation',
-      source:    enquiry.source,
-      pageUrl:   enquiry.pageUrl   || 'Not provided',
-      remoteIp:  enquiry.remoteIp,
+      fullName:    enquiry.fullName,
+      phone:       enquiry.phone,
+      email:       enquiry.email     || 'Not provided',
+      city:        enquiry.city      || 'Not provided',
+      service:     enquiry.service   || 'General Consultation',
+      source:      enquiry.source,
+      pageUrl:     enquiry.pageUrl   || 'Not provided',
+      remoteIp:    enquiry.remoteIp,
       submittedAt: new Date().toISOString(),
     });
 
@@ -118,12 +159,17 @@ export async function POST(request: Request) {
 
     try {
       await sendEnquiryEmail(enquiry);
-      console.log('[Taxfello] Enquiry email sent successfully.');
-    } catch (mailError) {
-      // Log a safe message — never expose SMTP config or credentials
-      console.error('[Taxfello] Email delivery failed. Check SMTP environment variables.');
-      // Do NOT re-throw: the enquiry is still acknowledged to the visitor
-      // to avoid breaking the form UX due to a transient email failure.
+      console.log('[Taxfello] Enquiry email sent successfully to support & BCC.');
+    } catch (mailError: any) {
+      console.error('[Taxfello] CRITICAL: Email delivery failed:', mailError?.message || mailError);
+      return NextResponse.json(
+        {
+          error:
+            'Unable to deliver consultation email right now. Please call our direct helpline at +91 88004 85106.',
+          details: process.env.NODE_ENV === 'development' ? mailError?.message : undefined,
+        },
+        { status: 500, headers: corsHeaders }
+      );
     }
 
     // -----------------------------------------------------------------------
@@ -136,7 +182,7 @@ export async function POST(request: Request) {
         message:
           'Your enquiry has been received. A Taxfello CA consultant will reach out within 2–4 working hours.',
       },
-      { status: 200 }
+      { status: 200, headers: corsHeaders }
     );
   } catch (error) {
     // Unexpected errors (e.g. malformed JSON)
@@ -146,7 +192,7 @@ export async function POST(request: Request) {
         error:
           'Unable to submit your enquiry right now. Please try again or call our direct helpline.',
       },
-      { status: 500 }
+      { status: 500, headers: corsHeaders }
     );
   }
 }

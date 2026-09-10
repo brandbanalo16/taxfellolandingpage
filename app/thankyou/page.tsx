@@ -47,7 +47,7 @@ export default function ThankYouPage() {
 
         {/* CTA back to website */}
         <Link
-          href="https://www.taxfello.com"
+          href="/"
           className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white bg-slate-900 hover:bg-brand-700 shadow-md hover:shadow-lg transition-all duration-200"
         >
           <svg
@@ -63,7 +63,7 @@ export default function ThankYouPage() {
               clipRule="evenodd"
             />
           </svg>
-          www.taxfello.com
+          Back to Homepage
         </Link>
 
         {/* Small note */}
