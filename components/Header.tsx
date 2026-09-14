@@ -73,7 +73,7 @@ export default function Header() {
               href="#lead-form"
               className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-navy-DEFAULT hover:bg-brand-700 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 group"
             >
-              <span>Talk to a CA Expert</span>
+              <span>Talk to a Tax Expert</span>
               <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </div>
@@ -117,7 +117,7 @@ export default function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full flex items-center justify-center px-4 py-3 text-sm font-semibold text-white bg-navy-DEFAULT rounded-lg shadow"
                 >
-                  Talk to a CA Expert
+                  Talk to a Tax Expert
                 </a>
               </div>
             </div>

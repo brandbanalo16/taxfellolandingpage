@@ -133,7 +133,7 @@ export default function LeadPopup() {
           <div className="absolute inset-0 z-0">
             <Image
               src="/src/advisor-popup.jpg"
-              alt="Taxfello CA Advisory Consultant"
+              alt="Taxfello Advisory Consultant"
               fill
               className="object-cover object-center opacity-25 md:opacity-40 filter mix-blend-multiply"
               priority
@@ -161,7 +161,7 @@ export default function LeadPopup() {
           {/* Bottom content: WhatsApp banner (hidden on compact mobile to save vertical space, shown on sm+) */}
           <div className="relative z-10 mt-3 sm:mt-6 pt-3 sm:pt-4 border-t border-slate-300/60 hidden sm:block">
             <div className="text-xs font-semibold text-slate-600 mb-1.5">
-              Chat directly with our CA team:
+              Chat directly with our team:
             </div>
             <a
               href="https://wa.me/918800485106?text=Hi%20Taxfello%20Team%2C%20I%20need%20assistance%20with%20tax%20and%20compliance%20services."

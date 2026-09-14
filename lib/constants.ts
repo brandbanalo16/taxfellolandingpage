@@ -376,7 +376,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     location: "South Delhi",
     rating: 5,
     service: "ITR Filing & GST LUT",
-    quote: "As a freelancer billing international clients, GST LUT and Section 44ADA rules used to be confusing. Taxfello's CA explained everything clearly and filed my return within 48 hours.",
+    quote: "As a freelancer billing international clients, GST LUT and Section 44ADA rules used to be confusing. Taxfello's team explained everything clearly and filed my return within 48 hours.",
     isVerifiedPlaceholder: true
   },
   {
@@ -400,7 +400,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     question: "How can I file my income tax return in Delhi with Taxfello?",
-    answer: "The process is seamless and digital: share your Form 16, bank statements, and investment receipts with our CA team. We verify your tax regime (New vs Old), compute applicable deductions, prepare your computation sheet for your approval, and file your ITR securely on the official e-Filing portal.",
+    answer: "The process is seamless and digital: share your Form 16, bank statements, and investment receipts with our expert team. We verify your tax regime (New vs Old), compute applicable deductions, prepare your computation sheet for your approval, and file your ITR securely on the official e-Filing portal.",
     category: "Income Tax"
   },
   {

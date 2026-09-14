@@ -98,7 +98,7 @@ export default function LeadForm() {
           {/* Left Column: Heading & Value Assurance */}
           <div className="lg:col-span-5">
             <div className="inline-block text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 border border-brand-200 px-3 py-1 rounded-full mb-3">
-              Direct CA Consultation
+              Direct Consultation
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
               Not Sure What You Need?

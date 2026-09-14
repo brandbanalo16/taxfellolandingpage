@@ -110,7 +110,7 @@ export default function WhyTaxfello() {
               <div className="absolute bottom-2 right-12 z-20">
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold bg-[#0c1b3a] border border-blue-500/40 text-blue-300 shadow-md">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mr-1.5" />
-                  CA Review
+                  Expert Review
                 </span>
               </div>
 

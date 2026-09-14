@@ -35,7 +35,7 @@ const ROW_ONE_REVIEWS: Review[] = [
     name: 'Deepak Reddy',
     role: 'Senior Tax Advisor',
     rating: 5,
-    quote: 'I recommend Taxfello to all my clients. Highly reliable, knowledgeable CA team and always prompt.',
+    quote: 'I recommend Taxfello to all my clients. Highly reliable, knowledgeable expert team and always prompt.',
   },
   {
     initials: 'PV',

@@ -111,7 +111,7 @@ export default function HeroLeadForm() {
             </div>
             <h4 className="text-lg font-bold text-slate-900 mb-1">Enquiry Submitted!</h4>
             <p className="text-xs text-slate-600 mb-5">
-              A Taxfello CA will review your requirements and call you shortly.
+              A Taxfello expert will review your requirements and call you shortly.
             </p>
             <button
               type="button"
@@ -233,7 +233,7 @@ export default function HeroLeadForm() {
                   <span>Submitting Details...</span>
                 ) : (
                   <>
-                    <span>Get Free CA Advice</span>
+                    <span>Get Free Expert Advice</span>
                     <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </>
                 )}

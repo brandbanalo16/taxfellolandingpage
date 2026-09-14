@@ -142,7 +142,7 @@ export default function HowItWorks() {
             href="#lead-form"
             className="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-slate-900 transition-colors group"
           >
-            <span>Have specific questions before filing? Talk to a CA specialist</span>
+            <span>Have specific questions before filing? Talk to a tax specialist</span>
             <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

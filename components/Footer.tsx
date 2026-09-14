@@ -30,6 +30,8 @@ export default function Footer() {
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
+    email: '',
+    city: '',
     service: '',
   });
 
@@ -68,6 +70,8 @@ export default function Footer() {
         body: JSON.stringify({
           fullName: formData.fullName.trim(),
           phone: formData.phone,
+          email: formData.email.trim() || undefined,
+          city: formData.city.trim() || undefined,
           service: formData.service || 'General Advisory',
           source: 'Footer Callback Form',
           pageUrl: typeof window !== 'undefined' ? window.location.href : undefined,
@@ -84,6 +88,8 @@ export default function Footer() {
       setFormData({
         fullName: '',
         phone: '',
+        email: '',
+        city: '',
         service: '',
       });
     } catch (err: any) {
@@ -95,9 +101,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-slate-950 text-slate-300 pt-16 pb-24 lg:pb-12 border-t border-slate-800">
+    <footer className="bg-slate-950 text-slate-300 pt-8 pb-6 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 pb-6 border-b border-slate-800/80 items-start">
 
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-4">
@@ -110,7 +116,7 @@ export default function Footer() {
                 className="h-8 w-auto object-contain"
               />
             </Link>
-            <p className="text-xs text-slate-400 leading-relaxed mb-5">
+            <p className="text-xs text-slate-400 leading-relaxed mb-3">
               Tax, compliance and business advisory services for individuals and businesses across Delhi and Delhi NCR.
             </p>
             <div className="space-y-2 text-xs text-slate-400">
@@ -131,7 +137,7 @@ export default function Footer() {
             </div>
           </div>
           {/* Col 2: Quick Links / Navbar Menu */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-2">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
               Quick Links
             </h4>
@@ -150,13 +156,13 @@ export default function Footer() {
           </div>
 
           {/* Col 4: Quick Consultation Form */}
-          <div className="lg:col-span-4">
-            <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-5 shadow-lg">
+          <div className="lg:col-span-6">
+            <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4 shadow-lg">
               <h4 className="text-sm font-bold text-white mb-1">
                 Request a Callback
               </h4>
               <p className="text-xs text-slate-400 mb-4">
-                Speak directly with a Senior CA consultant.
+                Speak directly with a Senior Tax consultant.
               </p>
 
               {status === 'success' ? (
@@ -166,7 +172,7 @@ export default function Footer() {
                     <span>Enquiry Received!</span>
                   </div>
                   <p className="text-[11px] text-emerald-300/80 leading-relaxed">
-                    Our CA team will reach out to you within 2-4 working hours.
+                    Our team will reach out to you within 2-4 working hours.
                   </p>
                   <button
                     type="button"
@@ -185,7 +191,8 @@ export default function Footer() {
                     </div>
                   )}
 
-                  <div>
+                  {/* Row 1: Full Name + Phone — 50/50 */}
+                  <div className="grid grid-cols-2 gap-2">
                     <input
                       type="text"
                       placeholder="Your Full Name *"
@@ -194,16 +201,31 @@ export default function Footer() {
                       className="w-full px-3 py-2 text-xs bg-slate-950 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
                       required
                     />
-                  </div>
-
-                  <div>
                     <input
                       type="tel"
-                      placeholder="10-digit Phone Number *"
+                      placeholder="Phone Number *"
                       value={formData.phone}
                       onChange={handlePhoneChange}
                       className="w-full px-3 py-2 text-xs bg-slate-950 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
                       required
+                    />
+                  </div>
+
+                  {/* Row 2: Email + City — 50/50 */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <input
+                      type="email"
+                      placeholder="Email (Optional)"
+                      value={formData.email}
+                      onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+                      className="w-full px-3 py-2 text-xs bg-slate-950 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
+                    />
+                    <input
+                      type="text"
+                      placeholder="City (Optional)"
+                      value={formData.city}
+                      onChange={(e) => setFormData((prev) => ({ ...prev, city: e.target.value }))}
+                      className="w-full px-3 py-2 text-xs bg-slate-950 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
                     />
                   </div>
 
@@ -252,7 +274,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2">
           <div>
             Copyright © {currentYear} Taxfello. All rights reserved. Managed by <a href="https://www.brandbanalo.com" className="hover:text-white transition-colors">Brandbanalo</a>
           </div>
@@ -267,7 +289,7 @@ export default function Footer() {
             <span className="text-slate-700 hidden sm:inline">|</span>
             <span className="flex items-center gap-1 text-slate-400">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              100% Confidential &amp; CA Supervised
+              100% Confidential & Supervised
             </span>
           </div>
         </div>

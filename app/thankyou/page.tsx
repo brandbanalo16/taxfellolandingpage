@@ -4,7 +4,7 @@ import { CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Thank You — Enquiry Received | Taxfello',
-  description: 'Your enquiry has been received. A Taxfello CA consultant will reach out to you shortly.',
+  description: 'Your enquiry has been received. A Taxfello consultant will reach out to you shortly.',
   robots: { index: false, follow: false },
 };
 

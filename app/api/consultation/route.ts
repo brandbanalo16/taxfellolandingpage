@@ -180,7 +180,7 @@ export async function POST(request: Request) {
       {
         success: true,
         message:
-          'Your enquiry has been received. A Taxfello CA consultant will reach out within 2–4 working hours.',
+          'Your enquiry has been received. A Taxfello consultant will reach out within 2–4 working hours.',
       },
       { status: 200, headers: corsHeaders }
     );

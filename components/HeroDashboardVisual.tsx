@@ -99,7 +99,7 @@ export default function HeroDashboardVisual() {
           <div className="text-xs">
             <div className="font-semibold text-amber-900">Upcoming: GST Return Filing</div>
             <div className="text-amber-800/80 text-[11px] mt-0.5">
-              Assigned CA is preparing ITC reconciliation. Due in 5 days.
+              Our expert is preparing ITC reconciliation. Due in 5 days.
             </div>
           </div>
         </div>
