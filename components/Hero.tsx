@@ -39,7 +39,7 @@ export default function Hero() {
 
             {/* Supporting paragraph */}
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl font-normal">
-              Taxfello helps individuals, startups, MSMEs and established businesses manage income tax, GST, accounting, company registration, ROC compliance and financial planning with professional CA/CS support.
+              Taxfello helps individuals, startups, MSMEs and established businesses manage income tax, GST, accounting, company registration, ROC compliance and financial planning with professional Tax Adviser&apos;s support.
             </p>
 
             {/* CTA Buttons */}
