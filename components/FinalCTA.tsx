@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, MessageCircle, Wallet, Lock, UserCheck } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Wallet, Lock, UserCheck } from 'lucide-react';
 
 export default function FinalCTA() {
   return (
@@ -35,7 +36,7 @@ export default function FinalCTA() {
                   className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-semibold text-white bg-slate-900/90 hover:bg-slate-800 border border-slate-700 transition-colors group"
                 >
                   <span>Talk to a tax expert</span>
-                  <MessageCircle className="w-4 h-4 ml-2 text-emerald-400 group-hover:scale-110 transition-transform" />
+                  <Image src="/src/img/whatsapp.png" alt="WhatsApp" width={20} height={20} className="w-5 h-5 ml-2 shrink-0 group-hover:scale-110 transition-transform" />
                 </a>
               </div>
 

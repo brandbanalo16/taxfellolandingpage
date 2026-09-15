@@ -29,6 +29,13 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: '/src/img/favicon.png', type: 'image/png' },
+    ],
+    shortcut: '/src/img/favicon.png',
+    apple: '/src/img/favicon.png',
+  },
 };
 
 export default function RootLayout({
@@ -41,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/src/img/favicon.png" type="image/png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}

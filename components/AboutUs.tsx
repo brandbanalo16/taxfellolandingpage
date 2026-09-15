@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Phone, MessageCircle, CheckCircle2, Award, ArrowRight, Briefcase, Users, Globe, TrendingUp } from 'lucide-react';
+import { Phone, CheckCircle2, Award, ArrowRight, Briefcase, Users, Globe, TrendingUp } from 'lucide-react';
 import { BRAND } from '@/lib/constants';
 
 export default function AboutUs() {
@@ -73,7 +73,7 @@ export default function AboutUs() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md hover:shadow-lg transition-all duration-200 group"
               >
-                <MessageCircle className="w-4 h-4 mr-2 text-white group-hover:scale-110 transition-transform" />
+                <Image src="/src/img/whatsapp.png" alt="WhatsApp" width={20} height={20} className="w-5 h-5 mr-2 shrink-0" />
                 <span>Chat on WhatsApp</span>
               </a>
             </div>

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { X, CheckCircle2, AlertCircle, Phone, ArrowRight, MessageCircle } from 'lucide-react';
+import { X, CheckCircle2, AlertCircle, Phone, ArrowRight } from 'lucide-react';
 import { CORE_SERVICES, BRAND } from '@/lib/constants';
 
 export default function LeadPopup() {
@@ -170,7 +170,7 @@ export default function LeadPopup() {
               className="inline-flex items-center space-x-2 bg-[#fde9df] hover:bg-[#fedccd] text-slate-900 px-3.5 py-1.5 rounded-full border border-orange-200 shadow-sm transition-all text-xs font-bold"
             >
               <span className="w-5 h-5 rounded-full bg-[#25D366] text-white flex items-center justify-center shrink-0">
-                <MessageCircle className="w-3 h-3 fill-white stroke-none" />
+                <Image src="/src/img/whatsapp.png" alt="WhatsApp" width={16} height={16} className="w-4 h-4" />
               </span>
               <span>+91 88004 85106</span>
             </a>

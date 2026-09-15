@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { ArrowRight, CheckCircle2, Video, UserCheck, Phone, MessageCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Video, UserCheck, Phone } from 'lucide-react';
+import Image from 'next/image';
 import { BRAND } from '@/lib/constants';
 
 export default function FilingModeCards() {
@@ -144,7 +145,7 @@ export default function FilingModeCards() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-semibold text-slate-950 bg-[#25D366] hover:bg-[#1fbd58] shadow-md hover:shadow-lg transition-all duration-200 group"
               >
-                <MessageCircle className="w-4 h-4 mr-2 fill-slate-950 stroke-none group-hover:scale-110 transition-transform" />
+                <Image src="/src/img/whatsapp.png" alt="WhatsApp" width={20} height={20} className="w-5 h-5 mr-2 shrink-0 group-hover:scale-110 transition-transform" />
                 <span>Chat on WhatsApp</span>
               </a>
             </div>

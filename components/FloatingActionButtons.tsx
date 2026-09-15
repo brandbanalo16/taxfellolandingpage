@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Phone, MessageCircle } from 'lucide-react';
+import { Phone } from 'lucide-react';
+import Image from 'next/image';
 import { BRAND } from '@/lib/constants';
 
 export default function FloatingActionButtons() {
@@ -29,7 +30,7 @@ export default function FloatingActionButtons() {
         aria-label="Chat with Taxfello on WhatsApp"
         className="group flex items-center bg-[#25D366] hover:bg-[#20ba59] text-white p-3.5 sm:px-4 sm:py-3 rounded-full shadow-[0_8px_25px_rgba(37,211,102,0.4)] hover:shadow-[0_12px_30px_rgba(37,211,102,0.5)] transition-all duration-200 transform hover:-translate-y-1"
       >
-        <MessageCircle className="w-5 h-5 sm:mr-2 fill-white stroke-none shrink-0" />
+        <Image src="/src/img/whatsapp.png" alt="WhatsApp" width={28} height={28} className="w-7 h-7 sm:mr-2 shrink-0" />
       </a>
 
       {/* 2. Direct Call Button */}
